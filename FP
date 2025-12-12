@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primus Mercearia - Qualidade e Economia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis de Cores e Estilo */
+        :root {
+            --cor-principal: #384F41; /* Verde Oliva Escuro */
+            --cor-secundaria: #F0F0E8; /* Creme (Fundo) */
+            --cor-destaque: #D1B000; /* Dourado/Amarelo Queimado */
+            --cor-texto: #333;
+            --cor-fundo-card: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cor-secundaria);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVEGAÇÃO */
+        header {
+            background-color: var(--cor-fundo-card);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--cor-principal);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cor-destaque);
+        }
+
+        /* HERO SECTION (Banner Principal) - OTIMIZADO */
+        .hero {
+            /* Imagem Placeholder de Prateleira de Mercearia - Use sua foto real */
+            background-image: url('https://i.imgur.com/uR3V5fS.jpg'); 
+            background-size: cover;
+            background-position: center;
+            height: 550px; /* Aumentado para mais impacto */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--cor-fundo-card); 
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.55); /* Overlay ligeiramente mais escuro para destaque */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; /* Peso extra para o título principal */
+            font-size: 3.5rem; /* Tamanho maior */
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+        }
+        
+        .hero p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem; /* Tamanho maior para subtítulo */
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+
+        .btn-principal {
+            background-color: var(--cor-destaque);
+            color: var(--cor-principal);
+            padding: 15px 40px; /* Botão maior */
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-principal:hover {
+            background-color: #B89900; 
+            transform: translateY(-2px);
+        }
+
+        /* SEÇÕES DE PRODUTOS */
+        .section-produtos {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-produtos h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--cor-principal);
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .card-produto {
+            background-color: var(--cor-fundo-card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .card-produto:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-produto img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-info {
+            padding: 15px;
+        }
+
+        .card-info h3 {
+            font-size: 1.1rem;
+            color: var(--cor-principal);
+            margin-bottom: 5px;
+        }
+
+        .card-info .preco {
+            font-weight: 700;
+            color: #C0392B; 
+            font-size: 1rem;
+        }
+        
+        .hortifruti-destaque {
+            background-color: #DDEEE5; /* Fundo mais claro para Hortifrúti */
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border-left: 5px solid var(--cor-principal);
+        }
+
+        .mapa-localizacao {
+            padding: 50px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .mapa-localizacao iframe {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+
+        /* RODAPÉ */
+        footer {
+            background-color: var(--cor-principal);
+            color: var(--cor-secundaria);
+            padding: 40px 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-info h4 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
+            color: var(--cor-destaque);
+            font-size: 1.2rem;
+        }
+
+        .footer-info p {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .social-icons a {
+            color: var(--cor-secundaria);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block; 
+            margin-bottom: 10px;
+        }
+
+        .aviso-entrega {
+            color: #FFD700; /* Amarelo Forte */
+            font-weight: 700;
+            margin-top: 20px;
+            display: block;
+        }
+
+        /* RESPONSIVIDADE BÁSICA */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; 
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .footer-info {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">MP Primus Mercearia</a>
+            <div class="nav-links">
+                <a href="#produtos">Produtos</a>
+                <a href="#hortifruti">Hortifrúti</a>
+                <a href="#localizacao">Localização</a>
+                <a href="#contato">Contato</a>
+                <a href="#" style="margin-left: 40px;">🛒 Pedido</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>QUALIDADE E ECONOMIA</h1>
+            <p>O seu comércio de produtos essenciais, aberto em 2025 em Rio das Flores.</p>
+            <a href="#produtos" class="btn-principal">VER PRODUTOS</a>
+        </div>
+    </section>
+
+    <section class="section-produtos" id="produtos">
+        <h2>Produtos Essenciais</h2>
+        
+        <div class="product-grid">
+            
+            <div class="card-produto">
+                <img src="https://i.imgur.com/uR3V5fS.jpg" alt="Pacote de Arroz">
+                <div class="card-info">
+                    <h3>Arroz Branco (5kg)</h3>
+                    <p>Qualidade e economia.</p>
+                    <p class="preco">R$ 29,90</p>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="https://i.imgur.com/tYtH4rU.jpg" alt="Pacote de Macarrão">
+                <div class="card-info">
+                    <h3>Macarrão Espaguete (500g)</h3>
+                    <p>Ideal para o dia a dia.</p>
+                    <p class="preco">R$ 5,50</p>
+                </div>
+            </div>
+            
+            <div class="card-produto">
+                <img src="https://i.imgur.com/8Q7f7z7.jpg" alt="Batata Chips Elma Chips">
+                <div class="card-info">
+                    <h3>Batata Chips (Elma Chips 100g)</h3>
+                    <p>Para o lanche da tarde.</p>
+                    <p class="preco">R$ 15,90</p>
+                </div>
+            </div>
+
+            <div class="card-produto">
+                <img src="https://i.imgur.com/9C8Lg0J.jpg" alt="Desinfetante">
+                <div class="card-info">
+                    <h3>Desinfetante Perfumado (1L)</h3>
+                    <p>Limpeza e proteção.</p>
+                    <p class="preco">R$ 9,99</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <section class="section-produtos" id="hortifruti">
+        <div class="hortifruti-destaque">
+            <h2>Frutas, Verduras e Legumes Frescos</h2>
+            <p style="font-size: 1.1rem; color: var(--cor-principal);">Variedade de produtos frescos, direto dos produtores locais para a sua mesa.</p>
+        </div>
+    </section>
+
+    <section class="mapa-localizacao" id="localizacao">
+        <h2>Onde Estamos</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116964.79373981882!2d-44.20573934575916!3d-22.396593922631584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x98d407632646d9%3A0x67353b34b7f0e740!2sRio%20das%20Flores%2C%20RJ!5e0!3m2!1spt-BR!2sbr!4v1634567890123!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+
+    <footer id="contato">
+        <div class="footer-content">
+            
+            <div class="footer-info">
+                <h4>Localização</h4>
+                <p>Rua Vereador Antônio Vieira, 54512 - Centro</p>
+                <p>Rio das Flores / RJ (CEP: 27660-000)</p>
+            </div>
+
+            <div class="footer-info">
+                <h4>Horário de Funcionamento</h4>
+                <p>Segunda a Sexta: 08:00h - 19:00h</p>
+                <p>Sábado: 08:00h - 14:00h</p>
+                <p>Domingo: 08:00h - 12:00h</p>
+            </div>
+
+            <div class="footer-info">
+                <h4>Conecte-se</h4>
+                <div class="social-icons">
+                    <a href="https://wa.me/SEUNUMERO" target="_blank" title="Peça pelo WhatsApp">
+                        <span style="font-size: 1.5rem;">✉</span> (00) 00000-0000
+                    </a>
+                    <a href="https://instagram.com/SEUINSTAGRAM" target="_blank" title="Siga no Instagram">
+                        <span style="font-size: 1.5rem;">❤</span> @SeuInstagram
+                    </a>
+                </div>
+            </div>
+            
+            <span class="aviso-entrega">ATENÇÃO: Não fazemos entregas. Atendimento apenas na loja física.</span>
+        </div>
+    </footer>
+
+    <script>
+        console.log("Site da Primus Mercearia carregado com sucesso!");
+    </script>
+
+</body>
+</html>
